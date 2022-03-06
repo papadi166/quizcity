@@ -190,7 +190,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.UserModel'
 
-SITE_ID = 1
+SITE_ID=1
 
 CRIPSPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
