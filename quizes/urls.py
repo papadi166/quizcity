@@ -1,0 +1,17 @@
+from django.urls import path, include, re_path
+from rest_framework.routers import DefaultRouter
+from .views import QuizViewSet, QuizDetailViewSet, CategoryViewSet, MyQuizList, quiz_data_view
+from main.views import Index
+
+router = DefaultRouter()
+router.register('quizes', QuizViewSet)
+router.register('details', QuizDetailViewSet )
+router.register('categories', CategoryViewSet )
+router.register('myquizes', MyQuizList)
+
+urlpatterns = [
+    path("", include(router.urls)),
+    path("<pk>/data/", quiz_data_view, name='quiz-data-view')
+    
+]
+
