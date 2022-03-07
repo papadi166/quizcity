@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.sites',
+    #'django.contrib.sites',
     'django.contrib.staticfiles',
     
     'rest_framework',
@@ -60,8 +60,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_rename_app',
 
-    'users',
-    'quizes',
+    'users.apps.usersConfig',
+    'quizes.apps.usersConfig',
 
 ]
 
