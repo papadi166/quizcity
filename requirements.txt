@@ -2,6 +2,7 @@ asgiref==3.5.0
 autopep8==1.6.0
 bcrypt==3.2.0
 bleach==4.1.0
+-e git+https://github.com/papadi166/quizcity.git@d5dfe16e955c85e62454456ca378de37b543a234#egg=blog
 certifi==2021.10.8
 cffi==1.15.0
 charset-normalizer==2.0.11
