@@ -10,12 +10,12 @@ from django.http import JsonResponse
 
 # Create your views here.
 class QuizTakerViewSet(viewsets.ViewSet):
-    permission_classes = {IsAuthenticated}
+    #permission_classes = {IsAuthenticated}
     queryset = Quiz.objects.all()
     serializer_class = QuizTaker
 
 class MyQuizList(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     queryset = Quiz.objects.all()
     serializer_class = MyQuizListSerializer
 
@@ -24,7 +24,7 @@ class QuizViewSet(viewsets.ModelViewSet):
     queryset = Quiz.objects.all().order_by('-created_at')
     serializer_class = QuizListSerializer
     lookup_field = "slug"
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(author = self.request.user)
@@ -46,7 +46,7 @@ class QuizDetailViewSet(viewsets.ModelViewSet):
     queryset = Quiz.objects.all().order_by('-created_at')
     lookup_field = "slug"
     serializer_class = QuizDetailSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
 
 
 class CategoryViewSet(viewsets.ModelViewSet):

@@ -4,7 +4,7 @@ from django.views.generic.base import TemplateView
 
 from django.shortcuts import render
 
-class Index(LoginRequiredMixin, TemplateView):
+class Index( TemplateView):
     def get_template_names(self):
         template_name = "home.html"
         return template_name
