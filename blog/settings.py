@@ -104,6 +104,8 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'blog.wsgi.application'
 
 
@@ -112,21 +114,15 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd9acq3ijk8m459',
-        'USER': 'lpbsrkivnvfmoj',
-        'PASSWORD': '1f64024b900505c733b981e6d8d65af08cadb7940d485fe49fc2e322fb65639c',
-        'HOST': 'ec2-3-230-238-86.compute-1.amazonaws.com',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'Blog',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
 
-
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
-
-
-DATABASE_URL = "postgres://lpbsrkivnvfmoj:1f64024b900505c733b981e6d8d65af08cadb7940d485fe49fc2e322fb65639c@ec2-3-230-238-86.compute-1.amazonaws.com:5432/d9acq3ijk8m459"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -216,6 +212,10 @@ WEBPACK_LOADER = {
         'STATS_FILE': str(BASE_DIR.joinpath( 'frontend', 'webpack-stats.json')),
     }
 }
+
+DATABASE_URL = "postgres://lpbsrkivnvfmoj:1f64024b900505c733b981e6d8d65af08cadb7940d485fe49fc2e322fb65639c@ec2-3-230-238-86.compute-1.amazonaws.com:5432/d9acq3ijk8m459"
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 
 
