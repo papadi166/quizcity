@@ -60,8 +60,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_rename_app',
 
-    'users.apps.usersConfig',
-    'quizes.apps.usersConfig',
+    'users',
+    'quizes',
 
 ]
 
