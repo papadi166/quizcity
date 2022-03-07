@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from PIL import Image 
+from PIL import Image
 import re
 from django.utils.translation import gettext_lazy as _
 
@@ -60,7 +60,6 @@ class Quiz(models.Model):
         max_length=6, choices=DIFF_CHOICES, default='medium')
     number_of_questions = models.IntegerField()
     required_score_to_pass = models.IntegerField(null=True, blank=True)
-    
 
     class Meta:
         ordering = ['-created_at', ]
