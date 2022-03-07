@@ -20,6 +20,6 @@
   "devDependencies": {
     "vue-router": "^4.0.12",
     "webpack-bundle-tracker": "^0.4.3",
-    "webpack": "4.24.0",
-  },
+    "webpack": "4.24.0"
+  }
 }
