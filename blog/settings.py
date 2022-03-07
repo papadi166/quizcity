@@ -84,7 +84,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'blog.urls'
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
-FRONTEND_DIR = os.path.join(BASE_DIR, 'frontend')
+#FRONTEND_DIR = os.path.join(BASE_DIR, 'frontend')
 
 TEMPLATES = [
     {
@@ -212,7 +212,7 @@ REST_FRAMEWORK = {
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': 'dist/',
-        'STATS_FILE': str(BASE_DIR.joinpath( 'frontend', 'webpack-stats.json')),
+        'STATS_FILE': str(BASE_DIR.joinpath('webpack-stats.json')),
     }
 }
 
