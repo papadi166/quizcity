@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-nhz)9hl)$b&*^q)36i-lj4dkhl(y*7-t3bir(t9cgg54l8z02z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['quizcitydeployed.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    #'django.contrib.sites',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     
     'rest_framework',
