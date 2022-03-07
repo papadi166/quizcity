@@ -104,9 +104,6 @@ TEMPLATES = [
     },
 ]
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
-
 WSGI_APPLICATION = 'blog.wsgi.application'
 
 
@@ -123,6 +120,11 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
+
 
 DATABASE_URL = "postgres://lpbsrkivnvfmoj:1f64024b900505c733b981e6d8d65af08cadb7940d485fe49fc2e322fb65639c@ec2-3-230-238-86.compute-1.amazonaws.com:5432/d9acq3ijk8m459"
 
