@@ -7,8 +7,8 @@ module.exports = {
 
   runtimeCompiler: true,
   // on Windows you might want to set publicPath: "http://127.0.0.1:8080/"
-  publicPath: '/staticfiles/src/vue/dist/',
-  outputDir: path.resolve(__dirname, '../staticfiles/src/vue/dist/'), // Output to a directory in STATICFILES_DIRS
+  publicPath: '/static/src/vue/dist/',
+  outputDir: path.resolve(__dirname, './static/src/vue/dist/'), // Output to a directory in STATICFILES_DIRS
   filenameHashing: false, // Django will hash file names, not webpack
   runtimeCompiler: true, // See: https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
   devServer: {
