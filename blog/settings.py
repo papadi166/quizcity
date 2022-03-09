@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.twitter',
     'allauth.socialaccount.providers.google',
 
     'dj_rest_auth',
@@ -71,7 +70,7 @@ AUTHENTICATION_BACKENDS = {
     'django.contrib.auth.backends.ModelBackend',
 
     #Allauth methods
-    'allauth.account.auth_backends.AuthenticationBackend'
+    'allauth.account.auth_backends.AuthenticationBackend',
 }
 
 MIDDLEWARE = [
@@ -164,6 +163,8 @@ LOGIN_URL = "/auth/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+DEFAULT_HTTP_PROTOCOL = "https"
 
 # Facebook configuration
 #SOCIAL_AUTH_FACEBOOK_KEY = env.int('FACEBOOK_APP_ID')
@@ -226,7 +227,8 @@ DATABASE_URL = "postgres://lpbsrkivnvfmoj:1f64024b900505c733b981e6d8d65af08cadb7
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
-
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
 CSRF_TRUSTED_ORIGINS = ['https://www.quizcity.net', 'http://10.10.10.23']
@@ -239,7 +241,40 @@ CORS_REPLACE_HTTPS_REFERER = True
 
 django_heroku.settings(locals())
 
-# 286243445026-1hg0gm0229d8f3d8apbt2gakq69rcb06.apps.googleusercontent.com
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    },
+    'facebook': {
+        'METHOD': 'oauth2',
+        #'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name'
+        ],
+        'EXCHANGE_TOKEN': True,
+        #'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v7.0',
+    }
+}
 
-# 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
 
+# 640270073725159
+
+# 48142ffc3617b1a71de8e10edffa2037
