@@ -102,6 +102,7 @@ class QuizDetailSerializer(serializers.ModelSerializer):
 		model = Quiz
 		fields = "__all__"
 
+
 	def get_quiztakers_set(self, obj):
 		try:
 			quiz_taker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)

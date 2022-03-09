@@ -50,7 +50,7 @@ class Quiz(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 on_delete=models.CASCADE)
     image = models.ImageField(upload_to='quizimages/', null=True, blank=True)
-    time = models.IntegerField(help_text="duration of the quiz in minutes")
+    time = models.FloatField(help_text="duration of the quiz in minutes", default="0")
     category = models.ForeignKey(
         Category, null=True, blank=True,
         verbose_name=_("Category"), on_delete=models.CASCADE)
@@ -61,6 +61,7 @@ class Quiz(models.Model):
     number_of_questions = models.IntegerField()
     required_score_to_pass = models.IntegerField(null=True, blank=True)
 
+
     class Meta:
         ordering = ['-created_at', ]
         verbose_name_plural = "Quizes"
@@ -70,6 +71,8 @@ class Quiz(models.Model):
 
     def get_questions(self):
          return self.question_set.all()[:self.number_of_questions]
+    
+
 
 
 class Question(models.Model):

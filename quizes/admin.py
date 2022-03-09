@@ -38,6 +38,7 @@ class QuizAdmin(admin.ModelAdmin):
     list_filter = ('category',)
     search_fields = ('description', 'category', )
     inlines = [QuestionInline,]
+    readonly_fields=('time', 'required_score_to_pass', 'number_of_questions')
 
     
 
