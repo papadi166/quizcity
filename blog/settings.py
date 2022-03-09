@@ -24,6 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = os.environ['SECRET_KEY']
 SECRET_KEY = 'django-insecure-nhz)9hl)$b&*^q)36i-lj4dkhl(y*7-t3bir(t9cgg54l8z02z'
+#os.environ['HTTPS'] = "on"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -161,10 +162,10 @@ USE_TZ = True
 
 LOGIN_URL = "/auth/login/"
 LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/quizgame/"
 ACCOUNT_LOGOUT_ON_GET = True
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
-DEFAULT_HTTP_PROTOCOL = "https"
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
+DEFAULT_HTTP_PROTOCOL = "http"
 
 # Facebook configuration
 #SOCIAL_AUTH_FACEBOOK_KEY = env.int('FACEBOOK_APP_ID')
@@ -208,11 +209,11 @@ ACCOUNT_EMAIL_REQUIRED = (True)
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.TokenAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        #'rest_framework.permissions.IsAuthenticated',
     ]
 }
 
@@ -227,16 +228,16 @@ DATABASE_URL = "postgres://lpbsrkivnvfmoj:1f64024b900505c733b981e6d8d65af08cadb7
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
-CSRF_TRUSTED_ORIGINS = ['https://www.quizcity.net', 'http://10.10.10.23']
+CSRF_TRUSTED_ORIGINS = ['https://www.quizcity.net', 'http://10.10.10.23:8000']
 CORS_ORIGIN_WHITELIST = (
     'https://www.quizcity.net',
-    'http://10.10.10.23',
+    'http://10.10.10.23:8000',
 )
-CORS_REPLACE_HTTPS_REFERER = True
+CORS_REPLACE_HTTPS_REFERER = False
 # Configure Django App for Heroku.
 
 django_heroku.settings(locals())
