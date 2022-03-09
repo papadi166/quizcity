@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.google',
 
     'dj_rest_auth',
     'dj_rest_auth.registration',
@@ -237,4 +238,8 @@ CORS_REPLACE_HTTPS_REFERER = True
 # Configure Django App for Heroku.
 
 django_heroku.settings(locals())
+
+# 286243445026-1hg0gm0229d8f3d8apbt2gakq69rcb06.apps.googleusercontent.com
+
+# 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
 
