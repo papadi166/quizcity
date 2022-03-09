@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-nhz)9hl)$b&*^q)36i-lj4dkhl(y*7-t3bir(t9cgg54l8z02z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['quizcitydeployed.herokuapp.com', 'www.quizcity.net' '127.0.0.1']
+ALLOWED_HOSTS = ['quizcitydeployed.herokuapp.com', 'www.quizcity.net' '10.10.10.23']
 
 
 # Application definition
@@ -66,9 +66,12 @@ INSTALLED_APPS = [
 
 ]
 
-#AUTHENTICATION_BACKENDS = {
+AUTHENTICATION_BACKENDS = {
+    'django.contrib.auth.backends.ModelBackend',
 
-#}
+    #Allauth methods
+    'allauth.account.auth_backends.AuthenticationBackend'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -99,6 +102,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'django.template.context_processors.request'
                 
             ],
         },
@@ -222,7 +226,12 @@ db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
 
-
+CSRF_TRUSTED_ORIGINS = ['https://quizcity.net', 'http://10.10.10.20']
+CORS_ORIGIN_WHITELIST = (
+    'https://quizcity.net',
+    'http://10.10.10.20',
+)
 # Configure Django App for Heroku.
 
 django_heroku.settings(locals())
+
