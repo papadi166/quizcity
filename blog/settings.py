@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    #'django.contrib.sites',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     
     'rest_framework',
@@ -226,11 +226,15 @@ db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
 
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = ['https://quizcity.net', 'http://10.10.10.20']
 CORS_ORIGIN_WHITELIST = (
     'https://quizcity.net',
     'http://10.10.10.20',
 )
+CORS_REPLACE_HTTPS_REFERER = True
 # Configure Django App for Heroku.
 
 django_heroku.settings(locals())
