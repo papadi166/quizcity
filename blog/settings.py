@@ -279,7 +279,7 @@ CSRF_COOKIE_SECURE = False
 SECURE_SSL_REDIRECT = False
 #os.environ['HTTPS'] = "on"
 DEBUG = True
-ALLOWED_HOSTS = ['10.10.10.23', 'www.quizcity.net']
+ALLOWED_HOSTS = ['10.10.10.23', 'www.quizcity.net'] 
 
 #Prod:
 #ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
