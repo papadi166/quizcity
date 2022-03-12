@@ -26,7 +26,6 @@ pnpm-debug.log*
 .Python
 env/
 develop-eggs/
-dist/
 downloads/
 eggs/
 lib/
