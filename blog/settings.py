@@ -265,7 +265,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'VERSION': 'v7.0',
     }
 }
-
+  
 
 # 640270073725159
 
