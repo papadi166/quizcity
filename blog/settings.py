@@ -291,7 +291,6 @@ os.environ['HTTPS'] = "on"
 SECURE_HSTS_SECONDS =  31536000
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-CORS_REPLACE_HTTPS_REFERER = True
 DEBUG = True
 ALLOWED_HOSTS = ['quizcitydeployed.herokuapp.com', 'www.quizcity.net', 'quizcity.net']
 
@@ -302,3 +301,4 @@ CORS_ORIGIN_WHITELIST = (
     'https://www.quizcity.net',
     'http://10.10.10.23:8001',
 )
+CORS_REPLACE_HTTPS_REFERER = False
