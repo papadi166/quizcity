@@ -50,6 +50,7 @@ class Quiz(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 on_delete=models.CASCADE)
     image = models.ImageField(upload_to='quizimages/', null=True, blank=True)
+    icon =  models.ImageField(upload_to='quizimages/', null=True, blank=True)
     time = models.FloatField(help_text="duration of the quiz in minutes", default="0")
     category = models.ForeignKey(
         Category, null=True, blank=True,
