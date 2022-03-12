@@ -291,7 +291,7 @@ os.environ['HTTPS'] = "on"
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['quizcity2.herokuapp.com', 'www.quizcity.net']
 
 CORS_ALLOW_CREDENTIALS = True
