@@ -286,7 +286,7 @@ ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 DEFAULT_HTTP_PROTOCOL = "https"
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True 
-SECURE_SSL_REDIRECT = True
+#SECURE_SSL_REDIRECT = True
 os.environ['HTTPS'] = "on"
 #SECURE_HSTS_SECONDS = 31536000
 #SECURE_HSTS_PRELOAD = True
@@ -295,6 +295,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['quizcity2.herokuapp.com', 'www.quizcity.net']
 
 CORS_ALLOW_CREDENTIALS = True
+PREPEND_WWW = True
+BASE_URL = "https://www.quizcity.net"
 CORS_ORIGIN_ALLOW_ALL = True
 CSRF_TRUSTED_ORIGINS = ['https://www.quizcity.net', 'http://10.10.10.23:8001']
 CORS_ORIGIN_WHITELIST = (
