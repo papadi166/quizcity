@@ -272,27 +272,27 @@ SOCIALACCOUNT_PROVIDERS = {
 # 48142ffc3617b1a71de8e10edffa2037
 
 #Dev :
-#ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
-#DEFAULT_HTTP_PROTOCOL = "http"
-#SESSION_COOKIE_SECURE = False
-#CSRF_COOKIE_SECURE = False
-#SECURE_SSL_REDIRECT = False
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
+DEFAULT_HTTP_PROTOCOL = "http"
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
 #os.environ['HTTPS'] = "on"
-#DEBUG = True
-#ALLOWED_HOSTS = ['10.10.10.23']
+DEBUG = True
+ALLOWED_HOSTS = ['10.10.10.23','https://www.quizcity.net']
 
 #Prod:
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
-DEFAULT_HTTP_PROTOCOL = "https"
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
-os.environ['HTTPS'] = "on"
+#ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+#DEFAULT_HTTP_PROTOCOL = "https"
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
+#SECURE_SSL_REDIRECT = True
+#os.environ['HTTPS'] = "on"
 #SECURE_HSTS_SECONDS =  31536000
-#SECURE_HSTS_PRELOAD = True
+#SECURE HSTS_PRELOAD = True
 #SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-DEBUG = True
-ALLOWED_HOSTS = ['quizcitydeployed.herokuapp.com', 'www.quizcity.net', 'quizcity.net']
+#DEBUG = True
+#ALLOWED_HOSTS = ['quizcitydeployed.herokuapp.com', 'www.quizcity.net', 'quizcity.net]
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
@@ -301,4 +301,4 @@ CORS_ORIGIN_WHITELIST = (
     'https://www.quizcity.net',
     'http://10.10.10.23:8001',
 )
-#CORS_REPLACE_HTTPS_REFERER = False 
+CORS_REPLACE_HTTPS_REFERER = False
