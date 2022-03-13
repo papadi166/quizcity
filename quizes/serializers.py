@@ -103,13 +103,13 @@ class QuizDetailSerializer(serializers.ModelSerializer):
 		fields = "__all__"
 
 
-	def get_quiztakers_set(self, obj):
-		try:
-			quiz_taker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)
-			serializer = QuizTakerSerializer(quiz_taker)
-			return serializer.data
-		except QuizTaker.DoesNotExist:
-			return None
+	#def get_quiztakers_set(self, obj):
+	#	try:
+	#		quiz_taker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)
+	#		serializer = QuizTakerSerializer(quiz_taker)
+	#		return serializer.data
+	#	except QuizTaker.DoesNotExist:
+	#		return None
 
 
 class QuizResultSerializer(serializers.ModelSerializer):
