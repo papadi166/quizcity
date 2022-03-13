@@ -11,6 +11,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class QuizListSerializer(serializers.ModelSerializer):
 	questions_count = serializers.SerializerMethodField()
 	category = serializers.StringRelatedField()
+	author = serializers.StringRelatedField()
 	class Meta:
 		model = Quiz
 		fields = "__all__"
@@ -93,10 +94,10 @@ class QuizTakerSerializer(serializers.ModelSerializer):
 
 class QuizDetailSerializer(serializers.ModelSerializer):
 	quiztakers_set = serializers.SerializerMethodField()
-	question_set = QuestionSerializer(many=True)
+	question_set = serializers.SerializerMethodField()
 	category = serializers.StringRelatedField()
 	author = serializers.StringRelatedField()
-	read_only_fields = ["required_score_to_pass"]
+	read_only_fields = ["questions_count", "required_score_to_pass"]
 
 	class Meta:
 		model = Quiz
