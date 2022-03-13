@@ -4,11 +4,9 @@ You can add your whole quiz or just a single question. I would appreciate that :
 
 Environment:
 1. Backend:  Python django (postgresql)
-    functionalities:
 
 
 2. Frontend: VueJs (Vuex, Bootstrap, SCSS)
-    functionalities:
 
 Main funcionalities of this project:
     - reactive, modern and beautifull site
