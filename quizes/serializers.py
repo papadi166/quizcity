@@ -94,7 +94,7 @@ class QuizTakerSerializer(serializers.ModelSerializer):
 
 class QuizDetailSerializer(serializers.ModelSerializer):
 	quiztakers_set = serializers.SerializerMethodField()
-	question_set = serializers.SerializerMethodField()
+
 	category = serializers.StringRelatedField()
 	author = serializers.StringRelatedField()
 	read_only_fields = ["questions_count", "required_score_to_pass"]
@@ -104,13 +104,13 @@ class QuizDetailSerializer(serializers.ModelSerializer):
 		fields = "__all__"
 
 
-	#def get_quiztakers_set(self, obj):
-	#	try:
-	#		quiz_taker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)
-	#		serializer = QuizTakerSerializer(quiz_taker)
-	#		return serializer.data
-	#	except QuizTaker.DoesNotExist:
-	#		return None
+	def get_quiztakers_set(self, obj):
+		try:
+			quiz_taker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)
+			serializer = QuizTakerSerializer(quiz_taker)
+			return serializer.data
+		except QuizTaker.DoesNotExist:
+			return None
 
 
 class QuizResultSerializer(serializers.ModelSerializer):
