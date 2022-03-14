@@ -20,6 +20,7 @@ from users.forms import UserForm
 from django_registration.backends.one_step.views import RegistrationView
 from main.views import Index, home_view
 from users import urls as users_urls
+from quizes import urls as quizes_urls
 from django.conf.urls.static import static
 
 
@@ -36,7 +37,7 @@ urlpatterns = [
 
     path('accounts/', include('allauth.urls')),
     path('api/', include(users_urls)),
-    path('api/', include('quizes.urls')),
+    path('api/', include(quizes_urls)),
 
     path('auth/', include('rest_framework.urls')),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),

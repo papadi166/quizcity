@@ -14,8 +14,8 @@ class UserModel(AbstractUser):
 
 
 class FavouriteQuiz(models.Model):
-        quiz =  models.ForeignKey(Quiz, on_delete=models.CASCADE)
-        user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+        quiz =  models.ForeignKey(Quiz, on_delete=models.CASCADE, null=True, blank=True)
+        user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
         class Meta:
                 verbose_name = "Favourite quizes"
