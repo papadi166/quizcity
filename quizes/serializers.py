@@ -99,10 +99,14 @@ class QuizDetailSerializer(serializers.ModelSerializer):
 	category = serializers.StringRelatedField()
 	author = serializers.StringRelatedField()
 	read_only_fields = ["questions_count", "required_score_to_pass"]
+	image = serializers.SerializerMethodField()
 
 	class Meta:
 		model = Quiz
 		fields = "__all__"
+
+	def get_image(self, obj):
+		obj.image.replace('http', 'https')
 
 
 	def get_quiztakers_set(self, obj):
