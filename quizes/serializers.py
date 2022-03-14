@@ -12,6 +12,7 @@ class QuizListSerializer(serializers.ModelSerializer):
 	questions_count = serializers.SerializerMethodField()
 	category = serializers.StringRelatedField()
 	author = serializers.StringRelatedField()
+	image = serializers.SerializerMethodField()
 	class Meta:
 		model = Quiz
 		fields = "__all__"
@@ -20,6 +21,9 @@ class QuizListSerializer(serializers.ModelSerializer):
 	def get_questions_count(self, obj):
 		return obj.question_set.all().count()
 
+	def get_image(self, obj):
+		url = str(obj.image.url)
+		return "https://www.quizcity.net" + url
 
 class AnswerSerializer(serializers.ModelSerializer):
 	
@@ -106,8 +110,8 @@ class QuizDetailSerializer(serializers.ModelSerializer):
 		fields = "__all__"
 
 	def get_image(self, obj):
-		serializer = QuizDetailSerializer
-		return str(obj.image.url)
+		url = str(obj.image.url)
+		return "https://www.quizcity.net" + url
 
 
 	def get_quiztakers_set(self, obj):
