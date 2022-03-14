@@ -176,14 +176,16 @@ ACCOUNT_LOGOUT_ON_GET = True
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'media'),
+    os.path.join(BASE_DIR, 'assets'),
 ]
 
 
 
 STATIC_URL = 'static/'
-
+MEDIA_URL = 'media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
@@ -294,7 +296,8 @@ CORS_ORIGIN_WHITELIST = (
     'https://www.quizcity.net',
     'http://10.10.10.23:8001',
 )
-SECURE_SSL_REDIRECT = True
+#CORS_REPLACE_HTTPS_REFERER = False
+#SECURE_SSL_REDIRECT = True
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
