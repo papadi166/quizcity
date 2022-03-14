@@ -294,7 +294,7 @@ CORS_ORIGIN_WHITELIST = (
     'https://www.quizcity.net',
     'http://10.10.10.23:8001',
 )
-#CORS_REPLACE_HTTPS_REFERER = False
+SECURE_SSL_REDIRECT = True
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
