@@ -48,7 +48,7 @@ class Quiz(models.Model):
     slug = models.SlugField(max_length=250, unique=True, null=True, blank=True)
     roll_out = models.BooleanField(default=False)
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
-                                on_delete=models.CASCADE)
+                                on_delete=models.CASCADE, blank=True, null=True)
     image = models.ImageField(upload_to='quizimages/', null=True, blank=True)
     icon =  models.ImageField(upload_to='quizimages/', null=True, blank=True)
     time = models.FloatField(help_text="duration of the quiz in minutes", default="0")
