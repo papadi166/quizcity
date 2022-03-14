@@ -4,6 +4,7 @@ from quizes.models import Quiz
 from django.conf import settings
 import uuid
 
+
 # Create your models here.
 
 class UserModel(AbstractUser):
