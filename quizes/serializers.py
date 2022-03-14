@@ -95,7 +95,7 @@ class QuizTakerSerializer(serializers.ModelSerializer):
 
 class QuizDetailSerializer(serializers.ModelSerializer):
 	#quiztakers_set = serializers.SerializerMethodField()
-	#question_set = QuestionSerializer(many=True)
+	question_set = QuestionSerializer(many=True)
 	category = serializers.StringRelatedField()
 	author = serializers.StringRelatedField()
 	read_only_fields = ["questions_count", "required_score_to_pass"]
