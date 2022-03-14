@@ -45,7 +45,7 @@ def quiz_data_view(request, pk):
 class QuizDetailViewSet(viewsets.ModelViewSet):
     queryset = Quiz.objects.all().order_by('-created_at')
     lookup_field = "slug"
-    serializer_class = QuizDetailSerializer(queryset, many=True)
+    serializer_class = QuizDetailSerializer
     #permission_classes = [IsAuthenticated]
 
 
