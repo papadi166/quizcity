@@ -22,13 +22,14 @@ class QuizListSerializer(serializers.ModelSerializer):
 
 
 class AnswerSerializer(serializers.ModelSerializer):
+	
 	class Meta:
 		model = Answer
 		fields = "__all__"
 
 
 class QuestionSerializer(serializers.ModelSerializer):
-	answer_set = AnswerSerializer(many=True)
+
 
 	class Meta:
 		model = Question
