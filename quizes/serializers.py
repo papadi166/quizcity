@@ -106,7 +106,7 @@ class QuizDetailSerializer(serializers.ModelSerializer):
 		fields = "__all__"
 
 	def get_image(self, obj):
-		return obj.image
+		return str(obj.image)
 
 
 	def get_quiztakers_set(self, obj):
