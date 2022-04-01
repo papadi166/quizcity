@@ -12,13 +12,12 @@ Main funcionalities of this project:
     - reactive, modern and beautifull site
     - Deployed at Heroku
 
-    Futures:
+    Assumptions:
 
-    - search engines optimizated ( Nuxt.js )
     - Mobile Design compatible
     - You can play duet with four friends and tournament with people from around the world.
     - You can win NFT's
-    - There are diffrent games you can play than quiz.
+    - In game shop integrated with stripe  
 
 
 
