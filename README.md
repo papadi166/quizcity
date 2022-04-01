@@ -27,23 +27,23 @@ Main funcionalities of this project:
 
 
 ## Project setup
+
 ```
 npm install
+py venv <project_name>
+cd venv/Scripts activate
+py manage.py makemigrations $ migrate
 ```
 
 ### Compiles and hot-reloads for development
 ```
 npm run serve
+python manage.py runserver
 ```
 
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration
