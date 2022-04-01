@@ -272,6 +272,7 @@ CHANNEL_LAYERS = {
 
 # 48142ffc3617b1a71de8e10edffa2037
 
+DEBUG = config('DEBUG', default=True, cast=bool)
 #Dev :
 #ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"; DEFAULT_HTTP_PROTOCOL = "http"; SESSION_COOKIE_SECURE = False; CSRF_COOKIE_SECURE = False; SECURE_SSL_REDIRECT = False; DEBUG = True; ALLOWED_HOSTS = ['10.10.10.23', 'www.quizcity.net'] 
 
