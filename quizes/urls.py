@@ -1,7 +1,6 @@
 from django.urls import path, include, re_path
 from rest_framework.routers import DefaultRouter
 from .views import QuizViewSet, QuizDetailViewSet, CategoryViewSet, MyQuizList
-from main.views import Index
 
 router = DefaultRouter()
 router.register('quizes', QuizViewSet)

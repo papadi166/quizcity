@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from .permissions import IsAuthor
 from quizes import serializers
 from django.http import JsonResponse
+from django.contrib import messages
 
 # Create your views here.
 class QuizTakerViewSet(viewsets.ViewSet):

@@ -48,27 +48,27 @@ class UsersAnswerSerializer(serializers.ModelSerializer):
 
 
 class MyQuizListSerializer(serializers.ModelSerializer):
-	completed = serializers.SerializerMethodField()
+	is_over = serializers.SerializerMethodField()
 	progress = serializers.SerializerMethodField()
 	questions_count = serializers.SerializerMethodField()
 	score = serializers.SerializerMethodField()
 
 	class Meta:
 		model = Quiz
-		fields = ["id", "title", "description", "image", "slug", "questions_count", "completed", "score", "progress"]
-		read_only_fields = ["questions_count", "completed", "progress"]
+		fields = ["id", "title", "description", "image", "slug", "questions_count", "is_over", "score", "progress"]
+		read_only_fields = ["questions_count", "is_over", "progress"]
 
-	def get_completed(self, obj):
+	def get_is_over(self, obj):
 		try:
 			quiztaker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)
-			return quiztaker.completed
+			return quiztaker.is_over
 		except QuizTaker.DoesNotExist:
 			return None
 
 	def get_progress(self, obj):
 		try:
 			quiztaker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)
-			if quiztaker.completed == False:
+			if quiztaker.is_over == False:
 				questions_answered = UsersAnswer.objects.filter(quiz_taker=quiztaker, answer__isnull=False).count()
 				total_questions = obj.question_set.all().count()
 				return int(questions_answered / total_questions)
@@ -82,7 +82,7 @@ class MyQuizListSerializer(serializers.ModelSerializer):
 	def get_score(self, obj):
 		try:
 			quiztaker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)
-			if quiztaker.completed == True:
+			if quiztaker.is_over == True:
 				return quiztaker.score
 			return None
 		except QuizTaker.DoesNotExist:
@@ -116,7 +116,7 @@ class QuizDetailSerializer(serializers.ModelSerializer):
 
 	def get_quiztakers_set(self, obj):
 		try:
-			quiz_taker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)
+			quiz_taker = QuizTaker.objects.get(user=self.context['request'].game_creator, quiz=obj)
 			serializer = QuizTakerSerializer(quiz_taker)
 			return serializer.data
 		except QuizTaker.DoesNotExist:

@@ -101,15 +101,18 @@ class Answer(models.Model):
         return f"Question: {self.question.text}, answer: {self.text}, correct: {self.is_correct}"
 
 class QuizTaker(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    room_code = models.CharField(max_length=100, null=True)
+    game_creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="games")
+    game_opponent = models.CharField(max_length=100, blank=True, null=True)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
-    completed = models.BooleanField(default=False)
+    is_over = models.BooleanField(default=False)
     date_finished = models.DateTimeField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    
 
     def __str__(self):
-        return self.user.email
+        return self.game_creator.email # TODO: Add opponent email also
 
 
 class UsersAnswer(models.Model):

@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     'users',
     'quizes',
 
+    'channels',
+
 ]
 
 AUTHENTICATION_BACKENDS = {
@@ -114,20 +116,32 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'blog.wsgi.application'
+ASGI_APPLICATION = 'blog.asgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    #'default': 
+   # {
+  #      'ENGINE': 'django.db.backends.postgresql_psycopg2',
+  #      'NAME': 'FreshQuizCityDBase',
+   #     'USER': 'postgres',
+   #     'PASSWORD': 'password',
+    #    'HOST': 'localhost',
+    #    'PORT': '5432',
+    #},
+    'default':
+    {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Blog',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'NAME': 'dfso9peunifja4',
+        'USER': 'kqqgqzgefpmcvi',
+        'PASSWORD': '57d08a80ee61467fce935a505d8e8c522a00c0f8bc77f76d5ca73abc6e88e857',
+        'HOST': 'ec2-52-213-119-221.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
+        
 }
 
 
@@ -223,7 +237,7 @@ WEBPACK_LOADER = {
     }
 }
 
-DATABASE_URL = "postgres://lpbsrkivnvfmoj:1f64024b900505c733b981e6d8d65af08cadb7940d485fe49fc2e322fb65639c@ec2-3-230-238-86.compute-1.amazonaws.com:5432/d9acq3ijk8m459"
+DATABASE_URL = "postgres://kqqgqzgefpmcvi:57d08a80ee61467fce935a505d8e8c522a00c0f8bc77f76d5ca73abc6e88e857@ec2-52-213-119-221.eu-west-1.compute.amazonaws.com:5432/dfso9peunifja4"
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
@@ -265,6 +279,17 @@ SOCIALACCOUNT_PROVIDERS = {
         'VERSION': 'v7.0',
     }
 }
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("10.10.10.23", 8002)],
+            "symmetric_encryption_keys": [SECRET_KEY],
+        },
+    },
+}
   
   
 
@@ -273,14 +298,13 @@ SOCIALACCOUNT_PROVIDERS = {
 # 48142ffc3617b1a71de8e10edffa2037
 
 #Dev :
-# ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"; DEFAULT_HTTP_PROTOCOL = "http"; SESSION_COOKIE_SECURE = False; CSRF_COOKIE_SECURE = False; SECURE_SSL_REDIRECT = False; DEBUG = True; ALLOWED_HOSTS = ['10.10.10.23', 'www.quizcity.net'] 
+#ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"; DEFAULT_HTTP_PROTOCOL = "http"; SESSION_COOKIE_SECURE = False; CSRF_COOKIE_SECURE = False; SECURE_SSL_REDIRECT = False; DEBUG = True; ALLOWED_HOSTS = ['10.10.10.23', 'www.quizcity.net'] 
 
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"; DEFAULT_HTTP_PROTOCOL = "https"; SESSION_COOKIE_SECURE = True ; CSRF_COOKIE_SECURE = True ; os.environ['HTTPS'] = "on"; SECURE_HSTS_SECONDS = 31536000; SECURE_HSTS_PRELOAD = True; SECURE_HSTS_INCLUDE_SUBDOMAINS = True; DEBUG = True; ALLOWED_HOSTS = ['quizcity2.herokuapp.com', 'www.quizcity.net', '10.10.10.23:8002']; SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https"); CORS_ALLOW_CREDENTIALS = True; PREPEND_WWW = True; BASE_URL = "https://www.quizcity.net"; CORS_ORIGIN_ALLOW_ALL = True; CSRF_TRUSTED_ORIGINS = ['https://www.quizcity.net', 'http://10.10.10.23:8002']; CORS_ORIGIN_WHITELIST = ('https://www.quizcity.net', 'http://10.10.10.23:8002',); DEBUG_PROPAGATE_EXCEPTIONS = True; WHITENOISE_USE_FINDERS = True; WHITENOISE_MANIFEST_STRICT = False; WHITENOISE_ALLOW_ALL_ORIGINS = True
+PROD ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"; DEFAULT_HTTP_PROTOCOL = "https"; SESSION_COOKIE_SECURE = True ; CSRF_COOKIE_SECURE = True ; os.environ['HTTPS'] = "on"; SECURE_HSTS_SECONDS = 31536000; SECURE_HSTS_PRELOAD = True; SECURE_HSTS_INCLUDE_SUBDOMAINS = True; DEBUG = True; ALLOWED_HOSTS = ['quizcity2.herokuapp.com', 'www.quizcity.net', '10.10.10.23:8002']; SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https"); CORS_ALLOW_CREDENTIALS = True; PREPEND_WWW = True; BASE_URL = "https://www.quizcity.net"; CORS_ORIGIN_ALLOW_ALL = True; CSRF_TRUSTED_ORIGINS = ['https://www.quizcity.net', 'http://10.10.10.23:8002']; CORS_ORIGIN_WHITELIST = ('https://www.quizcity.net', 'http://10.10.10.23:8002',); DEBUG_PROPAGATE_EXCEPTIONS = True; WHITENOISE_USE_FINDERS = True; WHITENOISE_MANIFEST_STRICT = False; WHITENOISE_ALLOW_ALL_ORIGINS = True
 
-#CORS_REPLACE_HTTPS_REFERER = False
-#SECURE_SSL_REDIRECT = True
+CORS_REPLACE_HTTPS_REFERER = False
+SECURE_SSL_REDIRECT = True
 DEBUG_PROPAGATE_EXCEPTIONS = True
-
 
 WHITENOISE_USE_FINDERS = True
 WHITENOISE_MANIFEST_STRICT = False
