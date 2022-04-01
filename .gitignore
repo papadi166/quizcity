@@ -6,6 +6,7 @@ node_modules/
 # local env files
 .env.local
 .env.*.local
+.env
 
 # Log files
 npm-debug.log*
@@ -74,6 +75,4 @@ __pycache__/
 local_settings.py
 
 .venv
-.env
-secret_key.txt
 db.sqlite3
