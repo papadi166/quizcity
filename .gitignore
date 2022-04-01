@@ -73,6 +73,6 @@ target/
 *.pyc
 __pycache__/
 local_settings.py
-
+secret_key.txt
 .venv
 db.sqlite3
