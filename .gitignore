@@ -75,4 +75,5 @@ local_settings.py
 
 .venv
 .env
+secret_key.txt
 db.sqlite3
