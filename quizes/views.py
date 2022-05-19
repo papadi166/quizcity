@@ -2,23 +2,34 @@ from cgitb import lookup
 from django.shortcuts import render
 from rest_framework import viewsets
 from .models import Answer, Category, Question, Quiz, QuizTaker, UsersAnswer
-from .serializers import CategorySerializer, MyQuizListSerializer, QuizDetailSerializer, QuizListSerializer, QuizResultSerializer, UsersAnswerSerializer
+from .serializers import CategorySerializer, MyQuizTakerSerializer, QuizDetailSerializer, QuizListSerializer, QuizResultSerializer, UsersAnswerSerializer, QuizTakerSerializer
 from rest_framework.permissions import IsAuthenticated
 from .permissions import IsAuthor
 from quizes import serializers
 from django.http import JsonResponse
 from django.contrib import messages
+from django.db.models import Q
+import datetime
+from django.utils import timezone
+
 
 # Create your views here.
-class QuizTakerViewSet(viewsets.ViewSet):
+class QuizTakerViewSet(viewsets.ModelViewSet):
     #permission_classes = {IsAuthenticated}
-    queryset = Quiz.objects.all()
-    serializer_class = QuizTaker
+    
+    queryset = QuizTaker.objects.all()
+    serializer_class = QuizTakerSerializer
+    lookup_field = "room_code"
 
-class MyQuizList(viewsets.ModelViewSet):
+class MyQuizTaker(viewsets.ModelViewSet):
     #permission_classes = [IsAuthenticated]
-    queryset = Quiz.objects.all()
-    serializer_class = MyQuizListSerializer
+    # getting user games which are maximum 15 minutes old
+    def get_queryset(self):
+        now = datetime.datetime.now()
+        time_threshold = datetime.datetime.now(timezone.utc) - datetime.timedelta(minutes=15)
+        return QuizTaker.objects.filter((Q(game_creator=self.request.user) | Q(game_opponent=self.request.user)) & Q(created_at__gt=time_threshold ))
+    serializer_class = MyQuizTakerSerializer
+    lookup_field = "room_code"
 
 
 class QuizViewSet(viewsets.ModelViewSet):

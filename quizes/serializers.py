@@ -1,141 +1,201 @@
 
 from dataclasses import fields
 from .models import Category, Quiz, QuizTaker, Question, Answer, UsersAnswer
+from users.models import UserModel
 from rest_framework import serializers
+import random
+from users.serializers import MiniUserSerializer
+
 
 class CategorySerializer(serializers.ModelSerializer):
-	class Meta:
-		model = Category
-		fields = "__all__"
+    class Meta:
+        model = Category
+        fields = "__all__"
 
-class QuizListSerializer(serializers.ModelSerializer):
-	questions_count = serializers.SerializerMethodField()
-	category = serializers.StringRelatedField()
-	author = serializers.StringRelatedField()
-	image = serializers.SerializerMethodField()
-	class Meta:
-		model = Quiz
-		fields = "__all__"
-		read_only_fields = ["questions_count", "required_score_to_pass"]
-
-	def get_questions_count(self, obj):
-		return obj.question_set.all().count()
-
-	def get_image(self, obj):
-		url = str(obj.image.url)
-		return "https://www.quizcity.net" + url
 
 class AnswerSerializer(serializers.ModelSerializer):
-	
-	class Meta:
-		model = Answer
-		fields = "__all__"
+
+    class Meta:
+        model = Answer
+        fields = "__all__"
+
+
+class QuestionRandomSerializer(serializers.ModelSerializer):
+    answer_set = AnswerSerializer(many=True)
+
+    class Meta:
+        model = Question
+        fields = "__all__"
 
 
 class QuestionSerializer(serializers.ModelSerializer):
-	answer_set = AnswerSerializer(many=True)
+    answer_set = AnswerSerializer(many=True)
 
-	class Meta:
-		model = Question
-		fields = "__all__"
+    class Meta:
+        model = Question
+        fields = "__all__"
 
+class MiniQuizSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Quiz
+        fields = ("title", "id",)
+        
+        
+class QuizListSerializer(serializers.ModelSerializer):
+    questions_count = serializers.SerializerMethodField()
+    category = serializers.StringRelatedField()
+    author = serializers.StringRelatedField()
+    image = serializers.SerializerMethodField()
+    random_questions = serializers.SerializerMethodField(
+        'get_random_questions')
+
+    class Meta:
+        model = Quiz
+        fields = "__all__"
+        read_only_fields = ["questions_count", "required_score_to_pass"]
+
+    def get_questions_count(self, obj):
+        return obj.question_set.all().count()
+
+    def get_image(self, obj):
+        url = str(obj.image.url)
+        return "https://www.quizcity.net" + url
+
+    def get_random_questions(self, obj):
+        questions = obj.get_random_question(3)
+        question_set = []
+  
+        for question in questions:
+            q = {}
+            if not (isinstance(question, str)):
+                q = {
+                    "text": question.text,
+                    "answers": question.answer_set.all().values()
+                }
+                question_set.append(q)
+            
+            else:
+                q = {
+                    "text": "there is not enought questions"
+                }
+                question_set.append(q)
+                break
+            
+        return question_set
 
 
 class UsersAnswerSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = UsersAnswer
-		fields = "__all__"
+    class Meta:
+        model = UsersAnswer
+        fields = "__all__"
 
 
-class MyQuizListSerializer(serializers.ModelSerializer):
-	is_over = serializers.SerializerMethodField()
-	progress = serializers.SerializerMethodField()
-	questions_count = serializers.SerializerMethodField()
-	score = serializers.SerializerMethodField()
+class MyQuizTakerSerializer(serializers.ModelSerializer):
+    game_creator = MiniUserSerializer()
+    game_opponent = MiniUserSerializer()
+    quiz = MiniQuizSerializer()
 
-	class Meta:
-		model = Quiz
-		fields = ["id", "title", "description", "image", "slug", "questions_count", "is_over", "score", "progress"]
-		read_only_fields = ["questions_count", "is_over", "progress"]
+    class Meta:
+        model = QuizTaker
+        fields = "__all__"
 
-	def get_is_over(self, obj):
-		try:
-			quiztaker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)
-			return quiztaker.is_over
-		except QuizTaker.DoesNotExist:
-			return None
-
-	def get_progress(self, obj):
-		try:
-			quiztaker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)
-			if quiztaker.is_over == False:
-				questions_answered = UsersAnswer.objects.filter(quiz_taker=quiztaker, answer__isnull=False).count()
-				total_questions = obj.question_set.all().count()
-				return int(questions_answered / total_questions)
-			return None
-		except QuizTaker.DoesNotExist:
-			return None
-
-	def get_questions_count(self, obj):
-		return obj.question_set.all().count()
-
-	def get_score(self, obj):
-		try:
-			quiztaker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)
-			if quiztaker.is_over == True:
-				return quiztaker.score
-			return None
-		except QuizTaker.DoesNotExist:
-			return None
 
 
 class QuizTakerSerializer(serializers.ModelSerializer):
-	usersanswer_set = UsersAnswerSerializer(many=True)
+    #usersanswer_set = UsersAnswerSerializer(many=True)
+    game_creator = serializers.SerializerMethodField()
+    game_opponent = serializers.SerializerMethodField()
+    quiz_data = serializers.SerializerMethodField()
 
-	class Meta:
-		model = QuizTaker
-		fields = "__all__"
+    class Meta:
+        model = QuizTaker
+        fields = "__all__"
+        
+    def get_quiz_data(self, quiz_taker):
+        quiz = MiniQuizSerializer(quiz_taker.quiz).data
+        return quiz
+        
+    def get_game_creator(self, quiz_taker):
+        username = MiniUserSerializer(quiz_taker.game_creator).data
+        return username
+    
+    def get_game_opponent(self, quiz_taker):
+        username = MiniUserSerializer(quiz_taker.game_opponent).data
+        return username
+    
+    def create(self, validated_data):
+        validated_data['game_creator'] = self.context['request'].user
+        game_opponent = ""
+        validated_data['game_opponent'] = UserModel.objects.get(username = self.context['request'].data['game_opponent']['username'])
+        #validated_data['quiz'] = Quiz.objects.get(username = self.context['request'].data['quiz']['title'])
+        return super(QuizTakerSerializer, self).create(validated_data)
 
 
 class QuizDetailSerializer(serializers.ModelSerializer):
-	#quiztakers_set = serializers.SerializerMethodField()
-	question_set = QuestionSerializer(many=True)
-	category = serializers.StringRelatedField()
-	author = serializers.StringRelatedField()
-	read_only_fields = ["questions_count", "required_score_to_pass"]
-	image = serializers.SerializerMethodField()
+    # quiztakers_set = serializers.SerializerMethodField()
+    question_set = QuestionSerializer(many=True)
+    category = serializers.StringRelatedField()
+    author = serializers.StringRelatedField()
+    read_only_fields = ["questions_count", "required_score_to_pass"]
+    image = serializers.SerializerMethodField()
+    random_questions = serializers.SerializerMethodField(
+        'get_random_questions')
 
-	class Meta:
-		model = Quiz
-		fields = "__all__"
+    class Meta:
+        model = Quiz
+        fields = "__all__"
 
-	def get_image(self, obj):
-		url = str(obj.image.url)
-		return "https://www.quizcity.net" + url
+    def get_image(self, obj):
+        url = str(obj.image.url)
+        return "https://www.quizcity.net" + url
 
-
-	def get_quiztakers_set(self, obj):
-		try:
-			quiz_taker = QuizTaker.objects.get(user=self.context['request'].game_creator, quiz=obj)
-			serializer = QuizTakerSerializer(quiz_taker)
-			return serializer.data
-		except QuizTaker.DoesNotExist:
-			return None
+    def get_quiztakers_set(self, obj):
+        try:
+            quiz_taker = QuizTaker.objects.get(
+                user=self.context['request'].game_creator, quiz=obj)
+            serializer = QuizTakerSerializer(quiz_taker)
+            return serializer.data
+        except QuizTaker.DoesNotExist:
+            return None
+        
+    def get_random_questions(self, obj):
+        questions = obj.get_random_question(3)
+        question_set = []
+  
+        for question in questions:
+            q = {}
+            if not (isinstance(question, str)):
+                q = {
+                    "text": question.text,
+                    "answer_set": question.answer_set.all().values()
+                }
+                question_set.append(q)
+            
+            else:
+                q = {
+                    "text": "there is not enought questions"
+                }
+                question_set.append(q)
+                continue
+            
+        return question_set
 
 
 class QuizResultSerializer(serializers.ModelSerializer):
-	quiztaker_set = serializers.SerializerMethodField()
-	question_set = QuestionSerializer(many=True)
+    quiztaker_set = serializers.SerializerMethodField()
+    question_set = QuestionSerializer(many=True)
 
-	class Meta:
-		model = Quiz
-		fields = "__all__"
+    class Meta:
+        model = Quiz
+        fields = "__all__"
 
-	def get_quiztaker_set(self, obj):
-		try:
-			quiztaker = QuizTaker.objects.get(user=self.context['request'].user, quiz=obj)
-			serializer = QuizTakerSerializer(quiztaker)
-			return serializer.data
+    def get_quiztaker_set(self, obj):
+        try:
+            quiztaker = QuizTaker.objects.get(
+                user=self.context['request'].user, quiz=obj)
+            serializer = QuizTakerSerializer(quiztaker)
+            return serializer.data
 
-		except QuizTaker.DoesNotExist:
-			return None 
+        except QuizTaker.DoesNotExist:
+            return None

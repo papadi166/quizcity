@@ -258,15 +258,20 @@ SOCIALACCOUNT_PROVIDERS = {
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [("10.10.10.23", 8002)],
-            "symmetric_encryption_keys": [SECRET_KEY],
-        },
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
     },
 }
   
-  
+#CHANNEL_LAYERS = {
+ #   "default": {
+  #      "BACKEND": "channels.layers.InMemoryChannelLayer",
+  #      "CONFIG": {
+  #          "hosts": [("10.10.10.23", 6678)],
+  #          "symmetric_encryption_keys": [SECRET_KEY],
+  #      },
+  #  },
+#}
+    
 
 # 640270073725159
 
@@ -274,15 +279,15 @@ CHANNEL_LAYERS = {
 
 DEBUG = config('DEBUG', default=True, cast=bool)
 #Dev :
-#ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"; DEFAULT_HTTP_PROTOCOL = "http"; SESSION_COOKIE_SECURE = False; CSRF_COOKIE_SECURE = False; SECURE_SSL_REDIRECT = False; DEBUG = True; ALLOWED_HOSTS = ['10.10.10.23', 'www.quizcity.net'] 
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"; DEFAULT_HTTP_PROTOCOL = "http"; SESSION_COOKIE_SECURE = False; CSRF_COOKIE_SECURE = False; SECURE_SSL_REDIRECT = False; DEBUG = True; ALLOWED_HOSTS = ['10.10.10.23', 'www.quizcity.net', 'localhost'] 
 
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"; DEFAULT_HTTP_PROTOCOL = "https"; SESSION_COOKIE_SECURE = True ; CSRF_COOKIE_SECURE = True ; os.environ['HTTPS'] = "on"; SECURE_HSTS_SECONDS = 31536000; SECURE_HSTS_PRELOAD = True; SECURE_HSTS_INCLUDE_SUBDOMAINS = True; DEBUG = True; ALLOWED_HOSTS = ['quizcity2.herokuapp.com', 'www.quizcity.net', '10.10.10.23:8002']; SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https"); CORS_ALLOW_CREDENTIALS = True; PREPEND_WWW = True; BASE_URL = "https://www.quizcity.net"; CORS_ORIGIN_ALLOW_ALL = True; CSRF_TRUSTED_ORIGINS = ['https://www.quizcity.net', 'http://10.10.10.23:8002']; CORS_ORIGIN_WHITELIST = ('https://www.quizcity.net', 'http://10.10.10.23:8002',); DEBUG_PROPAGATE_EXCEPTIONS = True; WHITENOISE_USE_FINDERS = True; WHITENOISE_MANIFEST_STRICT = False; WHITENOISE_ALLOW_ALL_ORIGINS = True
+#ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"; DEFAULT_HTTP_PROTOCOL = "https"; SESSION_COOKIE_SECURE = True ; CSRF_COOKIE_SECURE = True ; os.environ['HTTPS'] = "on"; SECURE_HSTS_SECONDS = 31536000; SECURE_HSTS_PRELOAD = True; SECURE_HSTS_INCLUDE_SUBDOMAINS = True; DEBUG = True; ALLOWED_HOSTS = ['quizcity2.herokuapp.com', 'www.quizcity.net', '10.10.10.23:8002']; SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https"); CORS_ALLOW_CREDENTIALS = True; PREPEND_WWW = True; BASE_URL = "https://www.quizcity.net"; CORS_ORIGIN_ALLOW_ALL = True; CSRF_TRUSTED_ORIGINS = ['https://www.quizcity.net', 'http://10.10.10.23:8002']; CORS_ORIGIN_WHITELIST = ('https://www.quizcity.net', 'http://10.10.10.23:8002',); DEBUG_PROPAGATE_EXCEPTIONS = True; WHITENOISE_USE_FINDERS = True; WHITENOISE_MANIFEST_STRICT = False; WHITENOISE_ALLOW_ALL_ORIGINS = True
 
-CORS_REPLACE_HTTPS_REFERER = False
+#CORS_REPLACE_HTTPS_REFERER = False
 #SECURE_SSL_REDIRECT = True
-DEBUG_PROPAGATE_EXCEPTIONS = True
+#DEBUG_PROPAGATE_EXCEPTIONS = True
 
-WHITENOISE_USE_FINDERS = True
-WHITENOISE_MANIFEST_STRICT = False
-WHITENOISE_ALLOW_ALL_ORIGINS = True
+#WHITENOISE_USE_FINDERS = True
+#WHITENOISE_MANIFEST_STRICT = False
+#WHITENOISE_ALLOW_ALL_ORIGINS = True
 

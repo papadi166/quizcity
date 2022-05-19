@@ -44,6 +44,7 @@ urlpatterns = [
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
     path('', Index.as_view(), name="index"),
     re_path(r'^quizgame/.*$', Index.as_view(), name="index"),
+    
 ] 
 
 if settings.DEBUG:
