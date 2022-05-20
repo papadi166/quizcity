@@ -30,7 +30,8 @@ Main funcionalities of this project:
 ```
 npm install
 py venv <project_name>
-cd venv/Scripts activate
+cd venv/Scripts .activate (win) / source activate (linux)
+change name of .env.example to .env and edit for your needs
 py manage.py makemigrations $ migrate
 ```
 
