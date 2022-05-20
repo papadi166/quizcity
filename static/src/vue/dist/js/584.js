@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkfrontend"]=self["webpackChunkfrontend"]||[]).push([[584],{5584:function(n,u,e){e.r(u),e.d(u,{default:function(){return d}});var t=e(821);const r=(0,t._)("h2",null,"404",-1),o=(0,t._)("h3",null,"Page not found",-1);function f(n,u,e,f,l,a){return(0,t.wg)(),(0,t.iD)(t.HY,null,[r,o],64)}var l={name:"NotFound"},a=e(3744);const c=(0,a.Z)(l,[["render",f]]);var d=c}}]);
-//# sourceMappingURL=584.js.map
