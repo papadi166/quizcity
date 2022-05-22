@@ -63,7 +63,7 @@ class QuizListSerializer(serializers.ModelSerializer):
         return "https://www.quizcity.net" + url
 
     def get_random_questions(self, obj):
-        questions = obj.get_random_question(3)
+        questions = obj.get_random_question(5)
         question_set = []
   
         for question in questions:
@@ -160,7 +160,7 @@ class QuizDetailSerializer(serializers.ModelSerializer):
             return None
         
     def get_random_questions(self, obj):
-        questions = obj.get_random_question(3)
+        questions = obj.get_random_question(5)
         question_set = []
   
         for question in questions:
