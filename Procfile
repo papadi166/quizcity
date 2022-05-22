@@ -1,1 +1,1 @@
-daphne -b 0.0.0.0 -p $PORT mysite.asgi:application
+daphne -b 0.0.0.0 -p $PORT blog.asgi:application
