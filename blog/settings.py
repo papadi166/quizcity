@@ -256,21 +256,21 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-#CHANNEL_LAYERS = {
-#    "default": {
-#        "BACKEND": "channels.layers.InMemoryChannelLayer",
-#    },
-#}
-  
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer",
-        "CONFIG": {
-            "hosts": [("www.quizcity.net", 6678)],
-            "symmetric_encryption_keys": [SECRET_KEY],
-       },
-   },
+    },
 }
+  
+#CHANNEL_LAYERS = {
+ #   "default": {
+  #      "BACKEND": "channels.layers.InMemoryChannelLayer",
+  #      "CONFIG": {
+  #          "hosts": [("10.10.10.23", 6678)],
+  #          "symmetric_encryption_keys": [SECRET_KEY],
+  #      },
+  #  },
+#}
     
 
 # 640270073725159
