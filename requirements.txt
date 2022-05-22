@@ -23,8 +23,6 @@ distlib==0.3.4
 dj-database-url==0.5.0
 dj-rest-auth==2.2.3
 Django==4.0.2
-django-admin-honeypot==1.1.0
-django-admin-honeypot-2 @ file:///C:/Users/papad/OneDrive/Pulpit/django-admin-honeypot-develop/-django-admin-honeypot-for-django-4.0-main/dist/django_admin_honeypot_2-1.1.0-py2.py3-none-any.whl
 django-allauth==0.48.0
 django-cors-headers==3.11.0
 django-crispy-forms==1.14.0
