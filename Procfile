@@ -1,1 +1,2 @@
-web: gunicorn blog.wsgi --preload 
+
+web: daphne blog.asgi:application
