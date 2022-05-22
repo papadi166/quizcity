@@ -256,23 +256,23 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
+#CHANNEL_LAYERS = {
+##    "default": {
+ #       "BACKEND": "channels.layers.InMemoryChannelLayer",
+ #   },
+#}
+
+redis_host = os.environ.get('REDIS_HOST', 'localhost')
+  
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer",
+        "CONFIG": {
+            "hosts": ["redis://:p7048c4c40f2bd0182bed4a2502f6302e2aa47c97830148e52ae8cf66035bf337@ec2-54-155-14-129.eu-west-1.compute.amazonaws.com:14670"],
+            "symmetric_encryption_keys": [SECRET_KEY],
+        },
     },
 }
-
-#redis_host = os.environ.get('REDIS_HOST', 'localhost')
-  
-#CHANNEL_LAYERS = {
-#    "default": {
-#        "BACKEND": "channels.layers.InMemoryChannelLayer",
- #       "CONFIG": {
- #           "hosts": ["redis://:p7048c4c40f2bd0182bed4a2502f6302e2aa47c97830148e52ae8cf66035bf337@ec2-54-155-14-129.eu-west-1.compute.amazonaws.com:14670"],
-#            "symmetric_encryption_keys": [SECRET_KEY],
-#        },
-#    },
-#}
 
 
     
