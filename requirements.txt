@@ -7,7 +7,6 @@ Automat==20.2.0
 autopep8==1.6.0
 bcrypt==3.2.0
 bleach==4.1.0
--e git+https://github.com/papadi166/quizcity.git@e8d8ab35614f33f62db2a2384af3aa755f1fecbc#egg=blog
 certifi==2021.10.8
 cffi==1.15.0
 channels==3.0.4
