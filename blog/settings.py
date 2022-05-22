@@ -256,24 +256,19 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-#CHANNEL_LAYERS = {
-##    "default": {
- #       "BACKEND": "channels.layers.InMemoryChannelLayer",
- #   },
-#}
-
-redis_host = os.environ.get('REDIS_HOST', 'localhost')
-  
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer",
+        
+
+       "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": ["redis://:p7048c4c40f2bd0182bed4a2502f6302e2aa47c97830148e52ae8cf66035bf337@ec2-54-155-14-129.eu-west-1.compute.amazonaws.com:14670"],
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:8002')],
             "symmetric_encryption_keys": [SECRET_KEY],
-        },
-    },
+        }
+    }
 }
 
+redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
     
 
@@ -285,7 +280,12 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 #Dev :
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"; DEFAULT_HTTP_PROTOCOL = "http"; SESSION_COOKIE_SECURE = False; CSRF_COOKIE_SECURE = False; SECURE_SSL_REDIRECT = False; DEBUG = True; ALLOWED_HOSTS = ['10.10.10.23', 'www.quizcity.net', 'localhost'] 
 #Prod
-#ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"; DEFAULT_HTTP_PROTOCOL = "https"; SESSION_COOKIE_SECURE = True ; CSRF_COOKIE_SECURE = True ; os.environ['HTTPS'] = "on"; SECURE_HSTS_SECONDS = 31536000; SECURE_HSTS_PRELOAD = True; SECURE_HSTS_INCLUDE_SUBDOMAINS = True; DEBUG = True; ALLOWED_HOSTS = ['quizcity2.herokuapp.com', 'www.quizcity.net', '10.10.10.23:8002']; SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https"); CORS_ALLOW_CREDENTIALS = True; PREPEND_WWW = True; BASE_URL = "https://www.quizcity.net"; CORS_ORIGIN_ALLOW_ALL = True; CSRF_TRUSTED_ORIGINS = ['https://www.quizcity.net', 'http://10.10.10.23:8002']; CORS_ORIGIN_WHITELIST = ('https://www.quizcity.net', 'http://10.10.10.23:8002', 'wss://www.quizcity.net'); DEBUG_PROPAGATE_EXCEPTIONS = True; WHITENOISE_USE_FINDERS = True; WHITENOISE_MANIFEST_STRICT = False; WHITENOISE_ALLOW_ALL_ORIGINS = True
+if not DEBUG:
+    import django_heroku
+    AWS_S3_FILE_OVERWRITE = False
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')    
+    django_heroku.settings(locals())
+    ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"; DEFAULT_HTTP_PROTOCOL = "https"; SESSION_COOKIE_SECURE = True ; CSRF_COOKIE_SECURE = True ; os.environ['HTTPS'] = "on"; SECURE_HSTS_SECONDS = 31536000; SECURE_HSTS_PRELOAD = True; SECURE_HSTS_INCLUDE_SUBDOMAINS = True; DEBUG = True; ALLOWED_HOSTS = ['quizcity2.herokuapp.com', 'www.quizcity.net', '10.10.10.23:8002']; SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https"); CORS_ALLOW_CREDENTIALS = True; PREPEND_WWW = True; BASE_URL = "https://www.quizcity.net"; CORS_ORIGIN_ALLOW_ALL = True; CSRF_TRUSTED_ORIGINS = ['https://www.quizcity.net', 'http://10.10.10.23:8002']; CORS_ORIGIN_WHITELIST = ('https://www.quizcity.net', 'http://10.10.10.23:8002', 'wss://www.quizcity.net'); DEBUG_PROPAGATE_EXCEPTIONS = True; WHITENOISE_USE_FINDERS = True; WHITENOISE_MANIFEST_STRICT = False; WHITENOISE_ALLOW_ALL_ORIGINS = True
 
 #CORS_REPLACE_HTTPS_REFERER = False
 #SECURE_SSL_REDIRECT = True

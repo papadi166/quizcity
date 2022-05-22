@@ -5,12 +5,13 @@ from time import sleep
 from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
 from .models import QuizTaker
+from django.conf import settings
 
  # ------------------------------ #
  
 class QuizRoomConsumer(WebsocketConsumer):
 
-    def connect(self):
+    async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_code']
         self.room = QuizTaker.objects.get(room_code=self.room_name)
         self.room_group_name = 'room_%s' % self.room_name
@@ -94,7 +95,7 @@ class QuizRoomConsumer(WebsocketConsumer):
         
         #self.send(text_data="[Welcome %s!]" % self.player_one) #to change
 
-    def disconnect(self, close_code):
+    async def disconnect(self, close_code):
         self.room.connected_users = self.room.connected_users - 1 
         self.room.save(update_fields=['connected_users'])
         
@@ -105,7 +106,7 @@ class QuizRoomConsumer(WebsocketConsumer):
         print(self.room.connected_users)
         
         
-    def receive(self, text_data):
+    async def receive(self, text_data):
         print(text_data)
         username_str = None
         username = self.scope["user"]
@@ -127,7 +128,7 @@ class QuizRoomConsumer(WebsocketConsumer):
             
             
 
-    def run_game(self, event):
+    async def run_game(self, event):
         data = event['payload']
         data = json.loads(data)
         
@@ -137,7 +138,7 @@ class QuizRoomConsumer(WebsocketConsumer):
                 'payload' : data['data'],
             }))
     
-    def send_user_info(self, event):
+    async def send_user_info(self, event):
         data = event['payload']
         data = json.loads(data)
         
