@@ -7,6 +7,7 @@ Automat==20.2.0
 autopep8==1.6.0
 bcrypt==3.2.0
 bleach==4.1.0
+-e git+https://github.com/papadi166/quizcity.git@e8d8ab35614f33f62db2a2384af3aa755f1fecbc#egg=blog
 certifi==2021.10.8
 cffi==1.15.0
 channels==3.0.4
@@ -23,6 +24,8 @@ distlib==0.3.4
 dj-database-url==0.5.0
 dj-rest-auth==2.2.3
 Django==4.0.2
+django-admin-honeypot==1.1.0
+django-admin-honeypot-2 @ file:///C:/Users/papad/OneDrive/Pulpit/django-admin-honeypot-develop/-django-admin-honeypot-for-django-4.0-main/dist/django_admin_honeypot_2-1.1.0-py2.py3-none-any.whl
 django-allauth==0.48.0
 django-cors-headers==3.11.0
 django-crispy-forms==1.14.0
@@ -72,6 +75,7 @@ pyOpenSSL==22.0.0
 pyparsing==3.0.7
 python-decouple==3.6
 python-dotenv==0.19.2
+python-monkey-business==1.0.0
 python3-openid==3.2.0
 pytz==2021.3
 pywin32-ctypes==0.2.0
@@ -87,6 +91,9 @@ toml==0.10.2
 tqdm==4.63.0
 twine==3.8.0
 Twisted==22.2.0
+twisted-iocpsupport==1.0.2
+txaio==22.2.1
+typing_extensions==4.1.1
 tzdata==2021.5
 urllib3==1.26.8
 virtualenv==20.13.2

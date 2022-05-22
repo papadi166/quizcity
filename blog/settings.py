@@ -256,21 +256,21 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
+#CHANNEL_LAYERS = {
+##    "default": {
+ #       "BACKEND": "channels.layers.InMemoryChannelLayer",
+ #   },
+#}
+  
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer",
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("redis://:p7048c4c40f2bd0182bed4a2502f6302e2aa47c97830148e52ae8cf66035bf337@ec2-54-155-14-129.eu-west-1.compute.amazonaws.com", 14670), 'redis://localhost:6379'],
+            "symmetric_encryption_keys": [SECRET_KEY],
+        },
     },
 }
-  
-#CHANNEL_LAYERS = {
- #   "default": {
-  #      "BACKEND": "channels.layers.InMemoryChannelLayer",
-  #      "CONFIG": {
-  #          "hosts": [("10.10.10.23", 6678)],
-  #          "symmetric_encryption_keys": [SECRET_KEY],
-  #      },
-  #  },
-#}
     
 
 # 640270073725159
