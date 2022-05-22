@@ -16,10 +16,11 @@ from channels.auth import AuthMiddlewareStack
 from channels.routing import URLRouter
 
 from quizes.routing import ws_urlpatterns
-
+import django
 # ----------------------------- #
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blog.settings')
+django.setup()
 
 application = ProtocolTypeRouter({
     'http': get_asgi_application(),
