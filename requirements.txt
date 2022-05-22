@@ -91,7 +91,6 @@ toml==0.10.2
 tqdm==4.63.0
 twine==3.8.0
 Twisted==22.2.0
-twisted-iocpsupport==1.0.2
 txaio==22.2.1
 typing_extensions==4.1.1
 tzdata==2021.5
