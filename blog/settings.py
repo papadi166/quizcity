@@ -256,11 +256,20 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
+#CHANNEL_LAYERS = {
+  #  "default": {
+ #       "BACKEND": "channels.layers.InMemoryChannelLayer",
+ #   },
+#}
+
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer",
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": ["'rediss://:p7048c4c40f2bd0182bed4a2502f6302e2aa47c97830148e52ae8cf66035bf337@ec2-54-155-14-129.eu-west-1.compute.amazonaws.com:14670'"],
+        },
     },
-}
+}  
   
 #CHANNEL_LAYERS = {
  #   "default": {
