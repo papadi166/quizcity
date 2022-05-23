@@ -266,7 +266,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": ["'rediss://:p7048c4c40f2bd0182bed4a2502f6302e2aa47c97830148e52ae8cf66035bf337@ec2-54-155-14-129.eu-west-1.compute.amazonaws.com:14670'"],
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:8002')],
         },
     },
 }  
@@ -302,8 +302,13 @@ ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"; DEFAULT_HTTP_PROTOCOL = "https"; SESSIO
 
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
-
 CELERY_CACHE_BACKEND = 'default'
+#CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_SERIALIER = 'json'
+CELERY_TASK_SERIALIER = 'json'
+CELERY_ACCEPT_CONTENT = ['application/json']
+
+#CELERY_BEAT_SCHEDULER = 'blog.schedulers:DatabaseScheduler'
 
 # django setting.
 CACHES = {
