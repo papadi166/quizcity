@@ -290,3 +290,16 @@ ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"; DEFAULT_HTTP_PROTOCOL = "https"; SESSIO
 #WHITENOISE_USE_FINDERS = True
 #WHITENOISE_MANIFEST_STRICT = False
 #WHITENOISE_ALLOW_ALL_ORIGINS = True
+
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+CELERY_CACHE_BACKEND = 'default'
+
+# django setting.
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
+}

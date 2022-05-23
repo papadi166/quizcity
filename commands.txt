@@ -1,0 +1,2 @@
+celery -A blog.celery worker --pool=solo -l info
+celery -A blog beat -l info
