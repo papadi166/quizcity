@@ -19,6 +19,7 @@ app.autodiscover_tasks()
 app.conf.broker_url = 'redis://:p7048c4c40f2bd0182bed4a2502f6302e2aa47c97830148e52ae8cf66035bf337@ec2-54-155-14-129.eu-west-1.compute.amazonaws.com:14670'
 app.conf.result_backend = 'redis://:p7048c4c40f2bd0182bed4a2502f6302e2aa47c97830148e52ae8cf66035bf337@ec2-54-155-14-129.eu-west-1.compute.amazonaws.com:14670'
 
-@app.task(bind=True)
-def add(x, y):
-    return x + y
+#@app.task(bind=True)
+@app.task
+def reverse(text):
+    return text[::-1]
