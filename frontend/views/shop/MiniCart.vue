@@ -8,7 +8,7 @@
   </div>
   <hr />
   <ul style="list-style-type: none">
-    <li class="minicart--item">
+    <li class="minicart--item" >
       <div class="placeholder"></div>
       <h1 class="title">Title of Product 01</h1>
       <p class="material">
@@ -75,6 +75,17 @@
 <script>
 export default {
     name: 'MiniCart',
+    async setup() {
+      const favourites = await fetch(process.env.VUE_APP_ROOT_API + "api/cart")
+      this.$store.state.cart = await favourites.json()
+
+      return {
+        favourites
+      }
+      
+
+      
+    }
 }
 </script>
 
@@ -88,7 +99,7 @@ body
   background: #FEEF5E
 
 .minicart
-  overflow-y: scroll
+  overflow: scroll
   position: fixed
   top:  405px
   z-index: 99999

@@ -11,6 +11,7 @@ const vuexLocalStorage = new VuexPersistence({
     count: state.count,
     soundMuted: state.soundMuted,
     quizes: state.quizes,
+    cart: state.cart,
   })
 })
 
@@ -30,6 +31,7 @@ export default createStore({
       authenticated: false,
       login_path: "login",
       username: "",
+      cart: {},
       
       searching: false,
       buying: false,

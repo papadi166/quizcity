@@ -64,6 +64,7 @@ INSTALLED_APPS = [
 
     'users',
     'quizes',
+    'store',
 
     'channels',
 

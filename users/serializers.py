@@ -24,6 +24,8 @@ class FriendSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
         fields = ('id', 'username',)
+        
+
 
 class MiniUserSerializer(serializers.ModelSerializer):
 
@@ -31,7 +33,9 @@ class MiniUserSerializer(serializers.ModelSerializer):
         model= UserModel
         fields = ('id', 'username',)
         read_only_fields = ('username', 'id')
-                  
+        
+
+
 class UserSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer()
     friends = FriendSerializer(many=True)
@@ -41,3 +45,5 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model= UserModel
         fields = ('id', 'profile', 'friends', 'friend_request_to', 'friend_request_from', 'last_login', 'is_superuser', 'username', 'first_name', 'last_name', 'email', 'is_staff', 'is_active', 'date_joined', 'avatar', 'groups', 'user_permissions',) #'games'
+
+    

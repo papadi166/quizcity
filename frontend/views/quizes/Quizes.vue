@@ -5,7 +5,7 @@
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 w-100" id="quizRow">
       
-      <div id="quiz-container" class="col"  v-for="quiz in $store.getters.getQuizes" :key="quiz.id">
+      <div id="quiz-container" class="col"  v-for="quiz in searchedQuizes" :key="quiz.id">
 
           <div class="card" >
             <router-link :to="{ name: 'QuizDetails', params: { slug: quiz.slug } }">
@@ -49,7 +49,8 @@ export default {
   data() {
     return {
       quizes: this.$store.getters.getQuizes,
-      searchOption: ""
+      searchOption: "",
+      searchedQuizes: this.$store.getters.getQuizes,
     };
   },
   
