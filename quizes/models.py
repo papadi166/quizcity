@@ -4,6 +4,7 @@ from PIL import Image
 import re
 from django.utils.translation import gettext_lazy as _
 from random import sample, choice
+from django.db.models import Q
 
 
 # Create your models here.
@@ -117,7 +118,8 @@ class QuizTaker(models.Model):
     game_opponent = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True, related_name="opponent",)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-    score = models.IntegerField(default=0)
+    game_creator_score = models.IntegerField(default=0)
+    game_opponent_score = models.IntegerField(default=0)
     is_over = models.BooleanField(default=False)
     date_finished = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -196,3 +198,15 @@ class UsersAnswer(models.Model):
 
     def __str__(self):
         return self.question.text
+    
+class LeaderBoard(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user")
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    score = models.IntegerField(default=0, blank=True, null=True)
+    
+    def __int__(self):
+        self.user
+    
+    class Meta:
+        ordering = ['-score', ]

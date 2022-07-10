@@ -70,6 +70,12 @@ def generate_room_code(sender, instance, *args, **kwargs):
         
         
         instance.room_code = room_code
+    if instance and not instance.winner:
+        if(instance.game_creator_score > instance.game_opponent_score):
+            instance.winner = instance.game_creator
+        else:
+            instance.winner = instance.game_opponent
+            
         
 @receiver(pre_save, sender = QuizTaker)
 def find_opponent(sender, instance, *args, **kwargs):

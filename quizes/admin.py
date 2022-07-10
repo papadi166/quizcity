@@ -1,6 +1,6 @@
 from dataclasses import field
 from django.contrib import admin
-from .models import Question, Quiz, Category, Answer, UsersAnswer, QuizTaker
+from .models import Question, Quiz, Category, Answer, UsersAnswer, QuizTaker, LeaderBoard
 from django.db import models
 from django.forms import TextInput, Textarea
 from django.contrib.admin.widgets import FilteredSelectMultiple
@@ -60,3 +60,4 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Answer)
 admin.site.register(QuizTaker, QuizTakerAdmin)
 admin.site.register(UsersAnswer)
+admin.site.register(LeaderBoard)

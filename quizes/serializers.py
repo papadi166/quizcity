@@ -1,10 +1,11 @@
 
 from dataclasses import fields
-from .models import Category, Quiz, QuizTaker, Question, Answer, UsersAnswer
+from .models import Category, Quiz, QuizTaker, Question, Answer, UsersAnswer, LeaderBoard
 from users.models import UserModel
 from rest_framework import serializers
 import random
 from users.serializers import MiniUserSerializer
+from django.db.models import Q
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -95,23 +96,41 @@ class MyQuizTakerSerializer(serializers.ModelSerializer):
     game_creator = MiniUserSerializer()
     game_opponent = MiniUserSerializer()
     quiz = MiniQuizSerializer()
+    winner = MiniUserSerializer()
 
     class Meta:
         model = QuizTaker
         fields = "__all__"
 
+class MyQuizTakerWonSerializer(serializers.ModelSerializer):
+    won_games = serializers.SerializerMethodField()
 
+    def get_won_games(self, obj):
+    
+        won = QuizTaker.objects.filter((Q(game_creator=self.context['request'].user) | Q(game_opponent=self.context['request'].user)) & Q(winner=self.context['request'].user ) & Q(quiz_id=obj ))
+        overall = 0
+        for game in won:
+            if(game.winner == self.context['request'].user):
+                overall += 1
+        return overall
+
+        
+    class Meta:
+        model = Quiz
+        fields = ("id","won_games", "title",)
 
 class QuizTakerSerializer(serializers.ModelSerializer):
     #usersanswer_set = UsersAnswerSerializer(many=True)
     game_creator = serializers.SerializerMethodField()
     game_opponent = serializers.SerializerMethodField()
     quiz_data = serializers.SerializerMethodField()
+    winner = MiniUserSerializer(required=False)
 
     class Meta:
         model = QuizTaker
         fields = "__all__"
         
+    
     def get_quiz_data(self, quiz_taker):
         quiz = MiniQuizSerializer(quiz_taker.quiz).data
         return quiz
@@ -122,7 +141,9 @@ class QuizTakerSerializer(serializers.ModelSerializer):
     
     def get_game_opponent(self, quiz_taker):
         username = MiniUserSerializer(quiz_taker.game_opponent).data
+
         return username
+    
     
     def create(self, validated_data):
         validated_data['game_creator'] = self.context['request'].user
@@ -199,3 +220,30 @@ class QuizResultSerializer(serializers.ModelSerializer):
 
         except QuizTaker.DoesNotExist:
             return None
+
+class LeaderBoardSerializer(serializers.ModelSerializer):
+    user = MiniUserSerializer()
+    score = serializers.SerializerMethodField()
+    quiz = MiniQuizSerializer()
+    
+    def get_score(self, obj):
+        games = QuizTaker.objects.filter((Q(game_creator=self.context['request'].user) | Q(game_opponent=self.context['request'].user)) & Q(quiz=obj.quiz))
+        score = 0
+        player_type = ""
+        for game in games:
+            if(game.game_opponent == self.context['request'].user ):
+                player_type = "game_opponent_score"
+                score += game.game_opponent_score
+            else:
+                player_type = "game_creator_score"
+                score += game.game_creator_score
+            obj.score = score
+            obj.save()
+                
+        return score
+
+    
+    
+    class Meta:
+        model = LeaderBoard
+        fields = "__all__"
