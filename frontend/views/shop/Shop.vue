@@ -18,10 +18,17 @@
 								<div id="product-1" class="single-product">
 										<div class="part-1">
 												<ul>
+<<<<<<< HEAD
 														<li><a href="#" @click="addToCart(product.id)"><font-awesome-icon :icon="[`fas`, `cart-shopping`]" size="lg" /></a></li>
 														<li><a href="#" @click="addToFavourites(product.id)"><font-awesome-icon :icon="[`fas`, `heart`]" size="lg" /></a></li>
 														<li><a href="#"><font-awesome-icon :icon="[`fas`, `plus`]" size="lg" /></a></li>
 														<li><a href="#" @click="showDetails(product.id) "><font-awesome-icon :icon="[`fas`, `expand`]" size="lg" /></a></li>
+=======
+														<li><a href="#"><font-awesome-icon :icon="[`fas`, `cart-shopping`]" size="lg" /></a></li>
+														<li><a href="#"><font-awesome-icon :icon="[`fas`, `heart`]" size="lg" /></a></li>
+														<li><a href="#"><font-awesome-icon :icon="[`fas`, `plus`]" size="lg" /></a></li>
+														<li><a href="#"><font-awesome-icon :icon="[`fas`, `expand`]" size="lg" /></a></li>
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 												</ul>
 										</div>
 										<div class="part-2">
@@ -89,22 +96,30 @@
 				</div>
 		</div>
 </section>
+<<<<<<< HEAD
 	<Suspense>
 		<template #default><MiniCart v-show="$store.state.is_cart_open === true"></MiniCart></template>
 		<template #fallback><MiniCartFallback v-show="$store.state.is_cart_open === true" ></MiniCartFallback></template>
 	
 	</Suspense>
+=======
+	<MiniCart v-if="$store.state.is_cart_open === true"></MiniCart>
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
     </div>
 </template>
 
 <script>
 import MiniCart from '../../views/shop/MiniCart.vue'
+<<<<<<< HEAD
 import MiniCartFallback from '../../views/shop/MiniCartFallback.vue'
 
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 export default {
     name: 'Shop',
 	components: {
 		MiniCart,
+<<<<<<< HEAD
 		MiniCartFallback
 	},
 	mounted() {
@@ -145,6 +160,11 @@ export default {
 		showDetails(product_id) {
 			console.log(product_id)
 		}
+=======
+	},
+	mounted() {
+		
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 	}
 }
 </script>

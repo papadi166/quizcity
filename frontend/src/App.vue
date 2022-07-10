@@ -6,7 +6,11 @@
         <SideBar></SideBar>
 
         
+<<<<<<< HEAD
       <main class="main" style="min-height:300px">
+=======
+      <main class="main">
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
         <router-view></router-view>
       </main>
 
@@ -41,6 +45,7 @@ export default {
     mounted() {
     console.log(process.env.VUE_APP_ROOT_API + "api/quizes/")
 
+<<<<<<< HEAD
   },
   created() {
     if(this.$store.getters.getUserName !== 'guest') {
@@ -60,6 +65,10 @@ export default {
         }
     }
     
+=======
+  
+	
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
   }
 }
 </script>

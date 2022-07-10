@@ -1,5 +1,9 @@
 <template>
+<<<<<<< HEAD
 <div >
+=======
+<div>
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
   <!-- Change to v-show to increase performace, but you have to repair bug with not showing answer 0 sometimes -->
   <div v-show="loading === false & (is_lobby_ready === true | room_code === undefined)" >
 
@@ -155,7 +159,10 @@
 import {getCookie} from '../../src/assets/getCookie.js';
 import RoundTransition from '../../src/components/quiz/RoundTransition.vue'
 import WaitingForOpponent from '../../src/components/quiz/WaitingForOpponent.vue'
+<<<<<<< HEAD
  import moment from 'moment';
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 // TODO: Make imposible to change user points in code, hack
 
 export default {
@@ -228,8 +235,11 @@ export default {
       is_lobby_ready: false,
       connected_users: 1,
       mode: "solo",
+<<<<<<< HEAD
       game_creator: null,
       game_opponent: null,
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 
       EmptyIcon: process.env.VUE_APP_ROOT_API + "static/assets/lock_ordinary_security_secure_game_protect_safe-512.webp",
       CurrentIcon: process.env.VUE_APP_ROOT_API + "static/assets/297806.png", // current
@@ -340,6 +350,7 @@ export default {
         data
       }))
     },
+<<<<<<< HEAD
     async saveQuizStats() {
       let player_type = ""
       let data = {}
@@ -385,6 +396,9 @@ export default {
               else return res.json()
           })
           .catch(err => {console.log(err)})
+=======
+    saveQuizTaker() {
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 
 
     },
@@ -393,8 +407,11 @@ export default {
        .then((res) => res.json())
        .then((data) => {
          if(this.players[0].name === data.game_creator.username || data.game_opponent.username) {
+<<<<<<< HEAD
            this.game_creator = data.game_creator.username
            this.game_opponent = data.game_opponent.username
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
            console.log("you have acces to this room")
            this.connectPlayer()
          } else {
@@ -513,6 +530,7 @@ export default {
             }
           );
           // if there is no more question, QUIZ FINISHED:
+<<<<<<< HEAD
         } else if(this.actualQuizNumber > 5) {
           this.question = "";
           this.quizFinished = true;
@@ -520,12 +538,21 @@ export default {
           if (this.mode === "multiplayer") this.saveQuizStats()
           
           
+=======
+        } else if(this.actualQuizNumber == 5) {
+          this.question = "";
+          this.quizFinished = true;
+          console.log("quiz Finished")
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 
         // Prevents loading next question
         } else {
           this.question = "";
           this.quizFinished = true;
+<<<<<<< HEAD
           if (this.mode === "multiplayer") this.saveQuizStats()
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
           console.log("quiz finished ????")
         }
       }
@@ -591,19 +618,32 @@ export default {
             console.log(animations)
 
             
+<<<<<<< HEAD
 
              if (animations.length > 0) {
+=======
+            let progressBarTimer = null
+            progressBarTimer = setInterval(() => { if (animations.length > 0) {
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
               // TODO: ANIMATION BACKING
               //console.log("stopping progress bar")
               animations.forEach( (animation) => {animation.pause()})
              
 
               // clear intervat and run handle function again
+<<<<<<< HEAD
 
 
             }
 
 
+=======
+              clearInterval(progressBarTimer)
+              this.handleSelectItem(item, event)
+            }}, 1000)
+
+            progressBarTimer // run timer
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
             
             
             // DONE: 

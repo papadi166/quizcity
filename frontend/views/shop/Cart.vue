@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
     <body>
   <div id="w">
     <header id="title">
@@ -50,11 +51,14 @@
     </div>
   </div>
 </body>
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
       
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import {ref} from 'vue'
 
 
@@ -81,10 +85,17 @@ export default {
       
 
       
+=======
+export default {
+    name: 'Cart',
+    data() {
+
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
     },
 }
 </script>
 
+<<<<<<< HEAD
 <style scoped>
   @import url(https://fonts.googleapis.com/css?family=Fredoka+One);
 
@@ -325,4 +336,8 @@ td.checkout {
   -moz-box-shadow: inset 0 1px 3px 1px rgba(0,0,0,0.25);
   box-shadow: inset 0 1px 3px 1px rgba(0,0,0,0.25);
 }
+=======
+<style>
+
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 </style>

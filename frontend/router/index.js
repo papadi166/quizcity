@@ -27,6 +27,7 @@ const routes = [
     name: 'Profile',
     component: () => import('../views/accounts/Profile.vue'),
     meta: { navbarOn: true },
+<<<<<<< HEAD
     beforeEnter: (to, from, next) => {
       if (store.getters.getUserName!== "guest") { //this.$router.push('/accounts/login')
         next()
@@ -37,6 +38,8 @@ const routes = [
         
     },
      
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 
     children: [
       {
@@ -44,6 +47,7 @@ const routes = [
         name: 'Friends',
         component: () => import('../views/accounts/Friends.vue'),
         props: true,
+<<<<<<< HEAD
 
         
         
@@ -124,6 +128,41 @@ const routes = [
           } 
         
       },
+=======
+      },
+      {
+        path: '/profile/settings',
+        name: 'Settings',
+        component: () => import('../views/accounts/Settings.vue'),
+        children: [
+          {
+            path: '/profile/settings/remove_ads',
+            name: 'remove_ads',
+            component: () => import('../views/accounts/Friends.vue'),
+            props: true,
+          },
+          {
+            path: '/profile/settings/edit_profile',
+            name: 'edit_profile',
+            component: () => import('../views/accounts/Settings.vue'),
+          },
+          {
+            path: '/profile/settings/edit_notifications',
+            name: 'edit_notifications',
+            component: () => import('../views/accounts/Settings.vue'),
+          },
+          {
+            path: '/profile/settings/regulations',
+            name: 'regulations',
+            component: () => import('../views/accounts/Settings.vue'),
+          },
+          {
+            path: '/profile/settings/edit_privacy',
+            name: 'edit_privacy',
+            component: () => import('../views/accounts/Settings.vue'),
+          },
+        ]
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
       },
     ]
   },
@@ -132,6 +171,7 @@ const routes = [
     name: 'Notifications',
     component: () => import('../views/Notifications.vue'),
     meta: { navbarOn: true },
+<<<<<<< HEAD
     beforeEnter: (to, from, next) => {
 
       if (store.getters.getUserName!== "guest") { //this.$router.push('/accounts/login')
@@ -141,6 +181,8 @@ const routes = [
       } 
     
   },
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
   },
   {
     path: '/shop',
@@ -149,12 +191,15 @@ const routes = [
     meta: { navbarOn: true },
   },
   {
+<<<<<<< HEAD
     path: '/shop/cart',
     name: 'Cart',
     component: () => import('../views/shop/Cart.vue'),
     meta: { navbarOn: true },
   },
   {
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
     path: '/features',
     name: 'Features',
     component: () => import('../views/Features.vue'),

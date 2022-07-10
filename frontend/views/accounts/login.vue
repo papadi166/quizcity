@@ -26,14 +26,22 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
+<<<<<<< HEAD
 						<input type="text" class="form-control">
+=======
+						<input type="text" class="form-control" placeholder="username">
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
+<<<<<<< HEAD
 						<input type="password" class="form-control">
+=======
+						<input type="password" class="form-control" placeholder="password">
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 					</div>
 					<div class="row align-items-center remember">
 						<input type="checkbox">Remember Me
@@ -63,8 +71,18 @@
 import axios from 'axios'
 export default {
   name: 'Login',
+<<<<<<< HEAD
     
   
+=======
+  data() {
+    return {  
+      username: "papadi166",
+      password: "EmielRegis11",
+    }
+    
+  },
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
   methods: {
     login() {
       axios.post(process.env.VUE_APP_ROOT_API + 'auth/', {
@@ -76,7 +94,10 @@ export default {
     }
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 </script>
 
 <style scoped>

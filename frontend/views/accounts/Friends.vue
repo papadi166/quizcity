@@ -106,8 +106,12 @@ export default {
                 },
                 "score": 0,
                 "quiz": this.quiz_to_invite_id,
+<<<<<<< HEAD
                 "room_code": this.room_code,
 
+=======
+                "room_code": this.room_code
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 
             }),
           })

@@ -20,7 +20,10 @@
     "core-js": "^3.6.5",
     "css-pro-layout": "^1.1.0",
     "ioredis": "^5.0.5",
+<<<<<<< HEAD
     "moment": "^2.29.3",
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "redis": "^4.1.0",

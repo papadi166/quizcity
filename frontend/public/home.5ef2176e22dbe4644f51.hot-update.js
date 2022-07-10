@@ -1,0 +1,15 @@
+webpackHotUpdate("home",{
+
+/***/ "./node_modules/cache-loader/dist/cjs.js?!./node_modules/vue-loader-v16/dist/index.js?!./views/Home.vue?vue&type=script&lang=ts":
+/*!***********************************************************************************************************************************************!*\
+  !*** ./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./views/Home.vue?vue&type=script&lang=ts ***!
+  \***********************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _views_quizes_Quizes_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/quizes/Quizes.vue */ \"./views/quizes/Quizes.vue\");\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.esm-bundler.js\");\n\n// @ is an alias to /src\n\n\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(vue__WEBPACK_IMPORTED_MODULE_1__[\"defineComponent\"])( {\n  name: \"Home\",\n  components: {\n    QuizList: _views_quizes_Quizes_vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n\n\n\n  },\n  data() {\n    return {\n      isVisible: true,\n    }\n  },\n  methods: {\n    change() {\n      this.isVisible = !this.isVisible\n    }\n  },\n}));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9ub2RlX21vZHVsZXMvY2FjaGUtbG9hZGVyL2Rpc3QvY2pzLmpzPyEuL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyLXYxNi9kaXN0L2luZGV4LmpzPyEuL3ZpZXdzL0hvbWUudnVlP3Z1ZSZ0eXBlPXNjcmlwdCZsYW5nPXRzLmpzIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vdmlld3MvSG9tZS52dWU/OTA2MCJdLCJzb3VyY2VzQ29udGVudCI6WyI8dGVtcGxhdGU+XG4gIDxkaXYgaWQ9XCJhcHBcIj5cblxuICAgIDxRdWl6TGlzdCA+PC9RdWl6TGlzdD5cblxuXG5cblxuXG4gIDwvZGl2PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdCBsYW5nPVwidHNcIj5cbi8vIEAgaXMgYW4gYWxpYXMgdG8gL3NyY1xuaW1wb3J0IFF1aXpMaXN0IGZyb20gXCIuLi92aWV3cy9xdWl6ZXMvUXVpemVzLnZ1ZVwiO1xuaW1wb3J0IHsgZGVmaW5lQ29tcG9uZW50IH0gZnJvbSAndnVlJ1xuXG5cblxuZXhwb3J0IGRlZmF1bHQgZGVmaW5lQ29tcG9uZW50KCB7XG4gIG5hbWU6IFwiSG9tZVwiLFxuICBjb21wb25lbnRzOiB7XG4gICAgUXVpekxpc3QsXG5cblxuXG4gIH0sXG4gIGRhdGEoKSB7XG4gICAgcmV0dXJuIHtcbiAgICAgIGlzVmlzaWJsZTogdHJ1ZSxcbiAgICB9XG4gIH0sXG4gIG1ldGhvZHM6IHtcbiAgICBjaGFuZ2UoKSB7XG4gICAgICB0aGlzLmlzVmlzaWJsZSA9ICF0aGlzLmlzVmlzaWJsZVxuICAgIH1cbiAgfSxcbn0pO1xuPC9zY3JpcHQ+XG5cbjxzdHlsZSBzY29wZWQ+XG5cblxuXG48L3N0eWxlPiJdLCJtYXBwaW5ncyI6Ijs7OztBQWFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOyIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./node_modules/cache-loader/dist/cjs.js?!./node_modules/vue-loader-v16/dist/index.js?!./views/Home.vue?vue&type=script&lang=ts\n");
+
+/***/ })
+
+})

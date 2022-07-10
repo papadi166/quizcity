@@ -32,8 +32,13 @@ body,html {
   height: 50px;
   text-align: center;
   font-size: 10px;
+<<<<<<< HEAD
 
   margin-top: 13rem;
+=======
+  position: absolute;
+  top: 50%;
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
   left: 50%;
   -webkit-transform: translateY(-50%) translateX(-50%);
   

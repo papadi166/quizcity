@@ -32,7 +32,10 @@ export default createStore({
       login_path: "login",
       username: "",
       cart: {},
+<<<<<<< HEAD
       currency: 'EUR',
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
       
       searching: false,
       buying: false,
@@ -63,9 +66,12 @@ export default createStore({
     setListQuizes (state, data) {
       state.quizes = data
     },
+<<<<<<< HEAD
     setCurrency (state, data) {
       state.currency = data
     },
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
     soundmutation (state) {
       state.soundMuted = !state.soundMuted
       console.log(state.soundMuted)
@@ -91,9 +97,12 @@ export default createStore({
     getCartStatus (state) {
       return state.is_cart_open
     },  
+<<<<<<< HEAD
     getCurrency (state) {
       return state.currency
     },  
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
     getQuizes (state) {
       return state.quizes
     },
@@ -101,6 +110,7 @@ export default createStore({
       state.user.username === 'guest' ? state.login_path = "login" : state.login_path = "logout"
       return state.login_path
     },
+<<<<<<< HEAD
     isUserAuthenticated (state) {
       if(state.authenticated === true) {
         return true
@@ -108,6 +118,8 @@ export default createStore({
         return false
       }
     },
+=======
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
     getUserName (state) {
       return state.user.username
     },

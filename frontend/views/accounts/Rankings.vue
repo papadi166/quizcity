@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 
       <div class="leaderboard">
   <header>
@@ -71,6 +72,48 @@
   </main>
 </div>
 
+=======
+  <div>
+      <div id="quiz-name">
+            <font-awesome-icon style="float: left; margin" class="setting-img" :icon="['fa', 'circle-arrow-left']" size="lg" />
+            <p id="quiz-game-text">{{quiz_name}}</p>
+
+      </div>
+      <div id="user">
+          <div id="position">
+              <p>200</p>
+          </div>
+          <div>
+              <img id="profile-picture" :src="$store.getters.getUserAvatar">
+          </div>
+          <div id="points">
+              <p>300</p>
+          </div>
+      </div>
+
+      <hr>
+
+      <div id="rank-list">
+          <!-- TODO: LAZYLOADING USERS, when scroll -->
+          <div class="rank">
+            <p class="rank-number">1 </p>
+            <img id="profile-picture-small" :src="$store.getters.getUserAvatar">
+            <p> {{$store.getters.getUserName}}</p>
+            <p> POINTS</p>
+            
+          </div>
+          <hr>
+
+         <div class="rank">
+            <p class="rank-number">2 </p>
+            <img id="profile-picture-small" :src="$store.getters.getUserAvatar">
+            <p> {{$store.getters.getUserName}}</p>
+            <p> POINTS</p>
+          </div>
+          <hr>
+      </div>
+  </div>
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 </template>
 
 <script>
@@ -85,6 +128,7 @@ export default {
 }
 </script>
 
+<<<<<<< HEAD
 <style lang="scss" scoped>
    .leaderboard {
        margin: 0 auto;
@@ -214,4 +258,50 @@ body {
 .leaderboard {
   box-shadow: 0 0 40px -10px rgba(0, 0, 0, .4);
 }
+=======
+<style>
+    #quiz-name {
+        background-color: rgb(212, 27, 27);
+        height: 3rem;
+        font-size: 2rem;
+    }
+
+    #quiz-game-text {
+        margin: auto;
+        color: white;
+    }
+
+    #user {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #profile-picture {
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+    }
+
+    #profile-picture-small {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+    }
+
+    .rank {
+        display: flex;
+        margin-top: 15px;
+        
+    }
+    
+    #rank-list {
+
+    }
+
+    .rank-number {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+>>>>>>> c58784bb933c55c7eb92c30667c9715fb4aed4a7
 </style>
